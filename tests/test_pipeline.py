@@ -4,7 +4,7 @@ from pathlib import Path
 
 from rag_system.ingestion.chunkers.simple import SimpleChunker
 from rag_system.ingestion.parsers.markdown import MarkdownParser
-from rag_system.pipeline import IngestionPipeline
+from rag_system.pipelines.ingestion import IngestionPipeline
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 

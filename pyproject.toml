@@ -1,9 +1,18 @@
 [project]
 name = "rag_system"
-version = "0.1.0"
-description = "RAG system V0: unified ingestion pipeline (Markdown parser + simple chunker)"
+version = "0.2.0"
+description = "RAG system V1: ingestion (parser + token chunker) and indexing (embedder + index store)"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "tiktoken>=0.7.0",
+    "openai>=1.30.0",
+    "python-dotenv>=1.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
 
 [build-system]
 requires = ["hatchling"]
