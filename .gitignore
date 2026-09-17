@@ -1,2 +1,12 @@
+# Reference repositories (research only, not part of this project)
 ragas_repo/
 ragflow_repo/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/

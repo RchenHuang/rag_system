@@ -10,7 +10,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from rag_system import IngestionPipeline, MarkdownParser, SimpleChunker
+from rag_system import MarkdownParser, SimpleChunker
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SAMPLE = PROJECT_ROOT / "tests" / "fixtures" / "sample.md"
@@ -20,10 +20,11 @@ def main() -> None:
     source = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_SAMPLE
 
     parser = MarkdownParser()
-    pipeline = IngestionPipeline(parser=parser, chunker=SimpleChunker(max_chars=1000))
+    chunker = SimpleChunker(max_chars=1000)
 
+    # Parse once, then chunk the same Document so IDs stay consistent.
     document = parser.parse(source)
-    chunks = pipeline.run(source)
+    chunks = chunker.chunk(document)
 
     print("Document:")
     print(f"  id: {document.id}")
